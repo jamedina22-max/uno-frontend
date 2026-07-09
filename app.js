@@ -1,4 +1,4 @@
-const ws = new WebSocket(`ws://${window.location.host}`);
+const ws = new WebSocket('wss://uno-bakend.onrender.com');
 
 // DOM Elements - Screens
 const lobbyScreen = document.getElementById('lobby');
