@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNO - Premium Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- LOBBY SCREEN -->
+        <section id="lobby" class="screen active">
+            <div class="glass-card lobby-card">
+                <div class="logo">
+                    <h1>UNO</h1>
+                    <span class="badge">Premium Edition</span>
+                </div>
+                
+                <form id="join-form">
+                    <div class="input-group">
+                        <input type="text" id="username" placeholder="Ingresa tu apodo" autocomplete="off" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Entrar al Lobby</button>
+                </form>
+
+                <div id="waiting-room" class="hidden">
+                    <h3>Esperando Jugadores... (<span id="player-count">1</span>/4)</h3>
+                    <ul id="players-list">
+                        <!-- Players will be populated here -->
+                    </ul>
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GAME SCREEN -->
+        <section id="game" class="screen hidden">
+            <!-- Opponents -->
+            <div id="opponents-container">
+                <div class="opponent opponent-top glass-card">
+                    <div class="avatar">👤</div>
+                    <div class="info">
+                        <span class="name" id="opp-top-name">-</span>
+                        <span class="cards" id="opp-top-cards">0 cartas</span>
+                    </div>
+                </div>
+                <div class="opponent opponent-left glass-card">
+                    <div class="avatar">👤</div>
+                    <div class="info">
+                        <span class="name" id="opp-left-name">-</span>
+                        <span class="cards" id="opp-left-cards">0 cartas</span>
+                    </div>
+                </div>
+                <div class="opponent opponent-right glass-card">
+                    <div class="avatar">👤</div>
+                    <div class="info">
+                        <span class="name" id="opp-right-name">-</span>
+                        <span class="cards" id="opp-right-cards">0 cartas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Board (Center) -->
+            <div id="board">
+                <div class="direction-indicator" id="direction-indicator">Derecha ➡️</div>
+                <div class="piles">
+                    <div class="deck-pile" id="draw-card-btn" title="Robar Carta">
+                        <div class="card-back">UNO</div>
+                    </div>
+                    <div class="discard-pile" id="discard-pile">
+                        <!-- Top card renders here -->
+                    </div>
+                </div>
+                <div class="turn-info glass-card">
+                    <h2 id="current-turn">Turno de: -</h2>
+                    <p id="action-log">¡Esperando que inicie el juego!</p>
+                </div>
+            </div>
+
+            <!-- Player's Area -->
+            <div id="player-area">
+                <div class="controls">
+                    <button id="btn-uno" class="btn btn-danger hidden pulse">¡CANTAR UNO!</button>
+                    <button id="btn-corte" class="btn btn-warning">¡CANTAR CORTE!</button>
+                </div>
+                <div id="my-hand" class="hand">
+                    <!-- Cards will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- MODALS -->
+        <!-- Wildcard Color Picker -->
+        <div id="color-picker-modal" class="modal hidden">
+            <div class="modal-content glass-card">
+                <h3>Elige un Color</h3>
+                <div class="color-options">
+                    <button class="color-btn rojo" data-color="Rojo"></button>
+                    <button class="color-btn azul" data-color="Azul"></button>
+                    <button class="color-btn verde" data-color="Verde"></button>
+                    <button class="color-btn amarillo" data-color="Amarillo"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alert / Penalty Popup -->
+        <div id="alert-modal" class="modal hidden">
+            <div class="modal-content glass-card alert-box">
+                <div class="icon">⚠️</div>
+                <h3 id="alert-title">¡Atención!</h3>
+                <p id="alert-message">Mensaje de alerta</p>
+                <button id="alert-ok-btn" class="btn btn-primary">Entendido</button>
+            </div>
+        </div>
+        
+        <!-- Generic Toast Notification -->
+        <div id="toast-container"></div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
